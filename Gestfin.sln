@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34607.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gestfin", "Gestfin.csproj", "{80DF9E6E-BB90-4270-879C-4C0ED8705EA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80DF9E6E-BB90-4270-879C-4C0ED8705EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DF9E6E-BB90-4270-879C-4C0ED8705EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DF9E6E-BB90-4270-879C-4C0ED8705EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DF9E6E-BB90-4270-879C-4C0ED8705EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C95A7E0B-1800-48ED-89B9-C7361013E09A}
+	EndGlobalSection
+EndGlobal

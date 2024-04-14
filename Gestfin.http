@@ -1,0 +1,6 @@
+@Gestfin_HostAddress = http://localhost:5212
+
+GET {{Gestfin_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
