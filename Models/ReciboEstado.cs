@@ -1,7 +1,10 @@
-﻿namespace Gestfin.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Gestfin.Models
 {
     public enum ReciboEstado
     {
+        [Key]
         Generado = 0,
         Remesado = 1,
         Pagado = 2,

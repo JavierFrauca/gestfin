@@ -10,7 +10,7 @@ namespace Gestfin.Mappers
         {
             CreateMap<Comunidad, ComunidadListDto>();
             CreateMap<ComunidadAddDto, Comunidad>();
-            CreateMap<ComunidadReadWriteDto, Comunidad>().ReverseMap();
+            CreateMap<ComunidadEditDto, Comunidad>().ReverseMap();
         }
     }
 }

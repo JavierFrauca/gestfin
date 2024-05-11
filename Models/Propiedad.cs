@@ -4,8 +4,9 @@ namespace Gestfin.Models
 {
     public class Propiedad
     {
-        public int Id {  get; set; }
-        public int ComundiadId { get; set; }
+        [Key]
+        public int PropiedadId {  get; set; }
+        public int ComunidadId { get; set; }
         public string Codigo { get; set;}
         [MaxLength(2)]
         public string TipoVia { get; set; }

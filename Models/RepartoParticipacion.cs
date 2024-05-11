@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gestfin.Models
 {
     public class RepartoParticipacion
     {
-        public int Id { get; set; }
+        [Key]
+        public int RepartoParticipacionId { get; set; }
         public int ComunidadId {  get; set; }
         public int PropiedadId { get; set; }
         public int RepartoId {  get; set; }

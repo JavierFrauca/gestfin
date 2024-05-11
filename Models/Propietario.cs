@@ -4,7 +4,8 @@ namespace Gestfin.Models
 {
     public class Propietario
     {
-        public int Id { get; set; }
+        [Key]
+        public int PropietarioId { get; set; }
         public string Nombre { get; set; }
         [MaxLength(2)]
         public string TipoVia { get; set; }

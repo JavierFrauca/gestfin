@@ -1,8 +1,11 @@
-﻿namespace Gestfin.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Gestfin.Models
 {
     public class Recibo
     {
-        public int Id { get; set; }
+        [Key]
+        public int ReciboId { get; set; }
         public int ComunidadId { get; set; }
         public int PropiedadId { get; set; }
         public ReciboTipo Tipo { get; set;}

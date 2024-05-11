@@ -22,38 +22,13 @@ namespace Gestfin.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Gestfin.Models.Concepto", b =>
+            modelBuilder.Entity("Gestfin.Models.Comunidad", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<int>("ComunidadId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RepartoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ComunidadId")
-                        .IsUnique();
-
-                    b.ToTable("Conceptos");
-                });
-
-            modelBuilder.Entity("Gestfin.Models.Config.Comunidad", b =>
-                {
-                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ComunidadId"));
 
                     b.Property<string>("CIF")
                         .HasColumnType("nvarchar(max)");
@@ -95,7 +70,7 @@ namespace Gestfin.Migrations
                         .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ComunidadId");
 
                     b.ToTable("Comunidades", (string)null);
 
@@ -111,13 +86,38 @@ namespace Gestfin.Migrations
                             }));
                 });
 
-            modelBuilder.Entity("Gestfin.Models.Propiedad", b =>
+            modelBuilder.Entity("Gestfin.Models.Concepto", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ConceptoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ConceptoId"));
+
+                    b.Property<int>("ComunidadId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RepartoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ConceptoId");
+
+                    b.HasIndex("ComunidadId")
+                        .IsUnique();
+
+                    b.ToTable("Conceptos");
+                });
+
+            modelBuilder.Entity("Gestfin.Models.Propiedad", b =>
+                {
+                    b.Property<int>("PropiedadId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PropiedadId"));
 
                     b.Property<string>("Calle")
                         .HasMaxLength(150)
@@ -126,7 +126,7 @@ namespace Gestfin.Migrations
                     b.Property<string>("Codigo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ComundiadId")
+                    b.Property<int>("ComunidadId")
                         .HasColumnType("int");
 
                     b.Property<string>("Numero")
@@ -159,7 +159,10 @@ namespace Gestfin.Migrations
                         .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
-                    b.HasKey("Id");
+                    b.HasKey("PropiedadId");
+
+                    b.HasIndex("ComunidadId")
+                        .IsUnique();
 
                     b.ToTable("Propiedades", (string)null);
 
@@ -177,11 +180,11 @@ namespace Gestfin.Migrations
 
             modelBuilder.Entity("Gestfin.Models.Propietario", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PropietarioId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PropietarioId"));
 
                     b.Property<string>("Calle")
                         .HasMaxLength(150)
@@ -223,7 +226,7 @@ namespace Gestfin.Migrations
                         .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
-                    b.HasKey("Id");
+                    b.HasKey("PropietarioId");
 
                     b.ToTable("Propietarios", (string)null);
 
@@ -241,11 +244,11 @@ namespace Gestfin.Migrations
 
             modelBuilder.Entity("Gestfin.Models.PropietarioPropiedad", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PropietarioPropiedadId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PropietarioPropiedadId"));
 
                     b.Property<decimal>("Coeficiente")
                         .HasPrecision(18, 6)
@@ -266,7 +269,7 @@ namespace Gestfin.Migrations
                     b.Property<int>("PropietarioId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("PropietarioPropiedadId");
 
                     b.HasIndex("PropiedadId")
                         .IsUnique();
@@ -279,11 +282,11 @@ namespace Gestfin.Migrations
 
             modelBuilder.Entity("Gestfin.Models.Recibo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ReciboId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReciboId"));
 
                     b.Property<int>("ComunidadId")
                         .HasColumnType("int");
@@ -317,7 +320,7 @@ namespace Gestfin.Migrations
                     b.Property<int>("Tipo")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ReciboId");
 
                     b.ToTable("Recibos", (string)null);
 
@@ -335,11 +338,11 @@ namespace Gestfin.Migrations
 
             modelBuilder.Entity("Gestfin.Models.ReciboDetalle", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ReciboDetalleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReciboDetalleId"));
 
                     b.Property<decimal>("Importe")
                         .HasPrecision(18, 6)
@@ -361,7 +364,7 @@ namespace Gestfin.Migrations
                     b.Property<string>("Texto")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ReciboDetalleId");
 
                     b.HasIndex("ReciboId")
                         .IsUnique();
@@ -382,11 +385,11 @@ namespace Gestfin.Migrations
 
             modelBuilder.Entity("Gestfin.Models.ReciboPago", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ReciboPagoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReciboPagoId"));
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
@@ -401,7 +404,7 @@ namespace Gestfin.Migrations
                     b.Property<int>("ReciboId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ReciboPagoId");
 
                     b.HasIndex("ReciboId")
                         .IsUnique();
@@ -411,11 +414,11 @@ namespace Gestfin.Migrations
 
             modelBuilder.Entity("Gestfin.Models.Reparto", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RepartoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RepartoId"));
 
                     b.Property<int>("ComunidadId")
                         .HasColumnType("int");
@@ -429,7 +432,7 @@ namespace Gestfin.Migrations
                         .HasPrecision(18, 6)
                         .HasColumnType("decimal(18,6)");
 
-                    b.HasKey("Id");
+                    b.HasKey("RepartoId");
 
                     b.HasIndex("ComunidadId")
                         .IsUnique();
@@ -439,11 +442,11 @@ namespace Gestfin.Migrations
 
             modelBuilder.Entity("Gestfin.Models.RepartoParticipacion", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RepartoParticipacionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RepartoParticipacionId"));
 
                     b.Property<int>("ComunidadId")
                         .HasColumnType("int");
@@ -458,7 +461,7 @@ namespace Gestfin.Migrations
                     b.Property<int>("RepartoId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("RepartoParticipacionId");
 
                     b.HasIndex("PropiedadId")
                         .IsUnique();
@@ -468,9 +471,18 @@ namespace Gestfin.Migrations
 
             modelBuilder.Entity("Gestfin.Models.Concepto", b =>
                 {
-                    b.HasOne("Gestfin.Models.Config.Comunidad", null)
+                    b.HasOne("Gestfin.Models.Comunidad", null)
                         .WithOne("Conceptos")
                         .HasForeignKey("Gestfin.Models.Concepto", "ComunidadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Gestfin.Models.Propiedad", b =>
+                {
+                    b.HasOne("Gestfin.Models.Comunidad", null)
+                        .WithOne("Propiedades")
+                        .HasForeignKey("Gestfin.Models.Propiedad", "ComunidadId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -510,7 +522,7 @@ namespace Gestfin.Migrations
 
             modelBuilder.Entity("Gestfin.Models.Reparto", b =>
                 {
-                    b.HasOne("Gestfin.Models.Config.Comunidad", null)
+                    b.HasOne("Gestfin.Models.Comunidad", null)
                         .WithOne("Repartos")
                         .HasForeignKey("Gestfin.Models.Reparto", "ComunidadId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -526,9 +538,11 @@ namespace Gestfin.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Gestfin.Models.Config.Comunidad", b =>
+            modelBuilder.Entity("Gestfin.Models.Comunidad", b =>
                 {
                     b.Navigation("Conceptos");
+
+                    b.Navigation("Propiedades");
 
                     b.Navigation("Repartos");
                 });

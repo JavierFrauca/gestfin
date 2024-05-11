@@ -1,8 +1,11 @@
-﻿namespace Gestfin.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Gestfin.Models
 {
     public class Concepto
     {
-        public int Id { get; set; }
+        [Key]
+        public int ConceptoId { get; set; }
         public int ComunidadId {  get; set; }
         public int RepartoId {  get; set; }
         public string Descripcion { get; set; }

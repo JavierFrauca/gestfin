@@ -4,7 +4,8 @@ namespace Gestfin.Models
 {
     public class Comunidad
     {
-        public int Id { get; set; }
+        [Key]
+        public int ComunidadId { get; set; }
         public string Nombre { get; set; }
         public string CIF { get; set; }
         [MaxLength(2)]

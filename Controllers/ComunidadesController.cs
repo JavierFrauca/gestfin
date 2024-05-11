@@ -1,27 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Gestfin.Dtos;
-using Gestfin.Services;
+using Gestfin.Services.Implementations;
+using Gestfin.Services.Interfaces;
 
 namespace Gestfin.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
-    public class ComunidadesController(ComunidadesService service) : ControllerBase
+    [Route("api/v1/comunidad")]
+    public class ComunidadesController(IComunidadesService service) : ControllerBase
     {
-        private readonly ComunidadesService _service = service;
+        private readonly IComunidadesService _service = service;
 
         // GET: Comunidades
-        [HttpGet]
+        [HttpGet("/List")]
         public async Task<ActionResult<IEnumerable<ComunidadListDto>>> Index()
         {
             var result = await _service.ListAsync();
             return Ok(result);
         }
-        // GET: Comunidades
-        [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<ComunidadReadWriteDto>>> GetById(int id)
+        // GET: Comunidad
+        [HttpGet("{comunidadid}")]
+        public async Task<ActionResult<IEnumerable<ComunidadEditDto>>> GetById(int comunidadid)
         {
-            var (status, datareturn, messages) = await _service.ReadAsync(id);
+            var (status, datareturn, messages) = await _service.ReadAsync(comunidadid);
             if (status == false)
             {
                 return NotFound(messages.ToList());
@@ -31,7 +32,7 @@ namespace Gestfin.Controllers
                 return Ok(datareturn);
             }
         }
-        //POST: Comunidades
+        //POST: Comunidad
         [HttpPost]
         public async Task<ActionResult> Add(ComunidadAddDto data)
         {
@@ -42,21 +43,21 @@ namespace Gestfin.Controllers
             }
             return Ok(datareturn);
         }
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Write(int id, ComunidadReadWriteDto data)
+        [HttpPut("{comunidadid}")]
+        public async Task<ActionResult> Write(int comunidadid, ComunidadEditDto data)
         {
-            var (status, datareturn, messages) = await _service.WriteAsync(id,data);
+            var (status, datareturn, messages) = await _service.WriteAsync(comunidadid, data);
             if (status == false)
             {
                 return BadRequest(messages.ToList());
             }
             return Ok(datareturn);
         }
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        [HttpDelete("{comunidadid}")]
+        public async Task<ActionResult> Delete(int comunidadid)
         {
-            var (status, datareturn, messages) = await _service.DeleteAsync(id);
-            if(status == false)
+            var (status, datareturn, messages) = await _service.DeleteAsync(comunidadid);
+            if (status == false)
             {
                 return BadRequest(messages.ToList());
             }

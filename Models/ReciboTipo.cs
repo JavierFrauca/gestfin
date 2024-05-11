@@ -1,7 +1,10 @@
-﻿namespace Gestfin.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Gestfin.Models
 {
     public enum ReciboTipo
     {
+        [Key]
         Ordinario = 0,
         Derrama = 1,
         Calefaccion = 2,
