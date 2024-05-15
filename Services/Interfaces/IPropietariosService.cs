@@ -4,6 +4,7 @@ namespace Gestfin.Services.Interfaces
 {
     public interface IPropietariosService
     {
+        Task<List<PropietarioListDto>> ListAsync();
         Task<List<PropietarioListDto>> ListAsync(int comunidadId);
         Task<(bool status, PropietarioEditDto datareturn, List<string> messages)> ReadAsync(int propiedadId);
         Task<(bool status, PropietarioEditDto datareturn, List<string> messages)> WriteAsync(int propietarioId, PropietarioEditDto data);

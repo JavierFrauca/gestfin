@@ -16,6 +16,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IComunidadesService,ComunidadesService>();
 builder.Services.AddScoped<IPropiedadesService,PropiedadesService>();
 builder.Services.AddScoped<IPropietariosService, PropietariosService>();
+builder.Services.AddScoped<IRecibosService, RecibosService>();
+builder.Services.AddScoped<IRepartosService, RepartosService>();
 
 
 builder.Services.AddEndpointsApiExplorer();

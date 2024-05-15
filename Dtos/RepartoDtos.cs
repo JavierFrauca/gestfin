@@ -13,7 +13,7 @@ namespace Gestfin.Dtos
         public string Descripcion { get; set; }
         public decimal Enteros { get; set; }
     }
-    public class RepartoditDto
+    public class RepartoEditDto
     {
         public int ComunidadId { get; set; }
         public string Descripcion { get; set; }

@@ -39,4 +39,4 @@ namespace Gestfin.Dtos
         public Reparto Repartos { get; set; }
         public Concepto Conceptos { get; set; }
     }
-}
+}        /// 

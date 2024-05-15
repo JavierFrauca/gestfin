@@ -12,6 +12,13 @@ namespace Gestfin.Services.Implementations
         private MainDB Context { get; } = context;
         private IMapper Mapper { get; } = mapper;
 
+        public virtual async Task<List<PropietarioListDto>> ListAsync()
+        {
+            var list = await Context.Propietarios.ToListAsync();
+            var listDto = Mapper.Map<List<PropietarioListDto>>(list);
+            return listDto;
+        }
+
         public virtual async Task<List<PropietarioListDto>> ListAsync(int propiedadId)
         {
             var list = await Context.Propietarios.Where(x => x.PropietarioId == propiedadId).ToListAsync();

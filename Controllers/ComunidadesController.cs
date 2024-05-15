@@ -6,19 +6,26 @@ using Gestfin.Services.Interfaces;
 namespace Gestfin.Controllers
 {
     [ApiController]
-    [Route("api/v1/comunidad")]
+    [Route("api/v1/[Controller]")]
     public class ComunidadesController(IComunidadesService service) : ControllerBase
     {
         private readonly IComunidadesService _service = service;
 
-        // GET: Comunidades
+        /// <summary>
+        /// Obtiene una lista de comunidades.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("/List")]
         public async Task<ActionResult<IEnumerable<ComunidadListDto>>> Index()
         {
             var result = await _service.ListAsync();
             return Ok(result);
         }
-        // GET: Comunidad
+        /// <summary>
+        /// Obtiene una comunidad por su ID.
+        /// </summary>
+        /// <param name="comunidadid"></param>
+        /// <returns></returns>
         [HttpGet("{comunidadid}")]
         public async Task<ActionResult<IEnumerable<ComunidadEditDto>>> GetById(int comunidadid)
         {
@@ -32,7 +39,11 @@ namespace Gestfin.Controllers
                 return Ok(datareturn);
             }
         }
-        //POST: Comunidad
+        /// <summary>
+        /// Agrega una nueva comunidad.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> Add(ComunidadAddDto data)
         {
@@ -43,6 +54,12 @@ namespace Gestfin.Controllers
             }
             return Ok(datareturn);
         }
+        /// <summary>
+        /// Modifica una comunidad.
+        /// </summary>
+        /// <param name="comunidadid"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [HttpPut("{comunidadid}")]
         public async Task<ActionResult> Write(int comunidadid, ComunidadEditDto data)
         {
@@ -53,6 +70,11 @@ namespace Gestfin.Controllers
             }
             return Ok(datareturn);
         }
+        /// <summary>
+        /// Elimina una comunidad.
+        /// </summary>
+        /// <param name="comunidadid"></param>
+        /// <returns></returns>
         [HttpDelete("{comunidadid}")]
         public async Task<ActionResult> Delete(int comunidadid)
         {
